@@ -1,9 +1,11 @@
 import ingredients
+import math
 
 is_on = True                    # The coffee machine is on
 funds = 2.50                    # Starting funds
 resc = ingredients.resources    # Who needs to write all that?
 menu = ingredients.menu         # Same.
+
 
 def is_resource_sufficient(order_ingredients):
     """Use to check if the resources present in the machine are enough to make the user's drink choice"""
@@ -28,7 +30,7 @@ def is_transaction_successful(money_received, drink_cost):
     """Return True if money_received is accepted, or False if money_received is insufficient"""
     if money_received >= drink_cost:
         change = round(money_received - drink_cost, 2)
-        print(f"Payment accepted! Here is your change: ${change}\n")
+        print(f"Payment accepted! Here is your change: ${change:.2f}\n")
         global funds
         funds += drink_cost
         return True
@@ -54,7 +56,7 @@ while is_on:
               f"Water: {resc['water']} ml\n "
               f"Milk: {resc['milk']} ml\n "
               f"Coffee: {resc['coffee']} g")
-        print(f"Current amount of money: ${funds}\n")
+        print(f"Current amount of money: ${funds:.2f}\n")
     elif choice not in menu:
         print("Sorry, that is not a valid drink choice. Please select again.\n")
     else:
@@ -69,6 +71,8 @@ while is_on:
                 if another_choice.lower() == 'y':
                     is_on = True
                 elif another_choice.lower() == 'n':
+                    is_on = False
+                elif another_choice.lower() == 'off':
                     is_on = False
                 else:
                     print("Sorry, that is not a valid option.")
