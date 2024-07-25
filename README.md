@@ -45,5 +45,3 @@ Through this project, I practiced:
 - Add a graphical user interface
 - Implement more drink options
 - Create a resource refill function
-
-Feel free to explore the code and suggest any improvements!
